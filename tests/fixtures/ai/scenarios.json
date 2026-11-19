@@ -1,0 +1,43 @@
+{
+  "assumptions": [],
+  "scenarios": [
+    {
+      "title": "Léo, Mia et la citrouille magique",
+      "summary": "Le soir d'Halloween, une citrouille qui brille guide Léo et Mia vers une aventure pleine de lucioles et de bonbons.",
+      "characters": [
+        { "name": "Léo", "age": 6, "description": "Petit garçon curieux, cape de vampire." },
+        { "name": "Mia", "age": 4, "description": "Petite fille rieuse, chapeau de sorcière." }
+      ],
+      "choiceIdeas": ["Suivre la lumière dans la forêt ou au château", "Rentrer à la fête ou voler vers les étoiles"]
+    },
+    {
+      "title": "Le fantôme qui avait peur du noir",
+      "summary": "Léo et Mia aident un petit fantôme timide à retrouver sa lanterne avant minuit.",
+      "characters": [
+        { "name": "Léo", "age": 6, "description": "Petit garçon courageux." },
+        { "name": "Mia", "age": 4, "description": "Petite fille qui adore les fantômes." },
+        { "name": "Bouh", "age": null, "description": "Petit fantôme timide et gentil." }
+      ],
+      "choiceIdeas": ["Chercher dans le grenier ou dans le jardin", "Demander au chat ou à la chouette"]
+    },
+    {
+      "title": "La grande course des balais",
+      "summary": "Une sorcière gentille invite Léo et Mia à une course de balais au-dessus du village.",
+      "characters": [
+        { "name": "Léo", "age": 6, "description": "Petit garçon qui aime la vitesse." },
+        { "name": "Mia", "age": 4, "description": "Petite fille malicieuse." },
+        { "name": "Mélusine", "age": null, "description": "Sorcière gentille aux grandes lunettes." }
+      ],
+      "choiceIdeas": ["Passer par les nuages ou par la rivière", "Aider un concurrent ou foncer vers l'arrivée"]
+    },
+    {
+      "title": "Le chaudron des rires",
+      "summary": "Léo et Mia doivent trouver trois ingrédients rigolos pour la potion du rire d'Halloween.",
+      "characters": [
+        { "name": "Léo", "age": 6, "description": "Petit garçon apprenti magicien." },
+        { "name": "Mia", "age": 4, "description": "Petite fille experte en grimaces." }
+      ],
+      "choiceIdeas": ["Chercher une plume de corbeau ou une toile d'araignée", "Goûter la potion ou la garder pour la fête"]
+    }
+  ]
+}

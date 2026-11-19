@@ -1,0 +1,22 @@
+# Secrets (clés API)
+.env
+.env.*
+!.env.example
+
+# Données de l'application (projets, médias, réglages avec clés)
+data/
+
+# Données locales Claude Code
+.claude/settings.local.json
+
+# Dépendances, builds et sorties de tests
+node_modules/
+dist/
+coverage/
+tests/output/
+*.log
+*.tmp
+
+# Divers
+.DS_Store
+Thumbs.db

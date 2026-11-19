@@ -1,0 +1,30 @@
+{
+  "title": "Léo, Mia et la citrouille magique",
+  "description": "Une aventure d'Halloween pas trop effrayante.",
+  "startSegmentId": "intro",
+  "segments": [
+    { "id": "intro", "title": "La citrouille qui brille", "summary": "Léo et Mia trouvent une citrouille lumineuse.", "next": { "kind": "choice", "choiceId": "choix-lieu", "segmentId": null } },
+    { "id": "foret", "title": "La forêt des lucioles", "summary": "Des lucioles et un hibou à lunettes.", "next": { "kind": "choice", "choiceId": "choix-hibou", "segmentId": null } },
+    { "id": "chateau", "title": "Le château des bonbons", "summary": "Un fantôme gourmand offre des bonbons.", "next": { "kind": "choice", "choiceId": "choix-hibou", "segmentId": null } },
+    { "id": "fete", "title": "La fête du jardin", "summary": "Toutes les citrouilles s'allument.", "next": { "kind": "end", "choiceId": null, "segmentId": null } },
+    { "id": "etoiles", "title": "Le voyage dans les étoiles", "summary": "Le hibou les emmène voir les étoiles.", "next": { "kind": "end", "choiceId": null, "segmentId": null } }
+  ],
+  "choices": [
+    {
+      "id": "choix-lieu",
+      "prompt": "Où suivre la lumière ?",
+      "options": [
+        { "id": "opt-foret", "label": "La forêt des lucioles", "targetSegmentId": "foret" },
+        { "id": "opt-chateau", "label": "Le château des bonbons", "targetSegmentId": "chateau" }
+      ]
+    },
+    {
+      "id": "choix-hibou",
+      "prompt": "Que faire ensuite ?",
+      "options": [
+        { "id": "opt-fete", "label": "Rentrer à la fête", "targetSegmentId": "fete" },
+        { "id": "opt-etoiles", "label": "Voler vers les étoiles", "targetSegmentId": "etoiles" }
+      ]
+    }
+  ]
+}

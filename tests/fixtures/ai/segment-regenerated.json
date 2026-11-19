@@ -1,0 +1,12 @@
+{
+  "segments": [
+    {
+      "id": "foret",
+      "lines": [
+        { "characterId": "narrateur", "text": "Dans la forêt, un renard en pyjama les salue en bâillant." },
+        { "characterId": "mia", "text": "Il a l'air tout endormi !" },
+        { "characterId": "narrateur", "text": "Que doivent-ils faire ?" }
+      ]
+    }
+  ]
+}

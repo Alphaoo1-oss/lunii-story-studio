@@ -1,0 +1,40 @@
+{
+  "segments": [
+    {
+      "id": "intro",
+      "lines": [
+        { "characterId": "narrateur", "text": "Le soir d'Halloween, Léo et Mia trouvent une citrouille qui brille dans le jardin." },
+        { "characterId": "mia", "text": "Elle nous fait un clin d'œil !" },
+        { "characterId": "narrateur", "text": "Où doivent-ils suivre la lumière de la citrouille ?" }
+      ]
+    },
+    {
+      "id": "foret",
+      "lines": [
+        { "characterId": "narrateur", "text": "Dans la forêt, des lucioles dansent autour d'eux." },
+        { "characterId": "leo", "text": "Regarde, un hibou avec des lunettes !" },
+        { "characterId": "narrateur", "text": "Que doivent-ils faire ?" }
+      ]
+    },
+    {
+      "id": "chateau",
+      "lines": [
+        { "characterId": "narrateur", "text": "Au château, un fantôme gourmand leur offre des bonbons." },
+        { "characterId": "narrateur", "text": "Que doivent-ils faire ensuite ?" }
+      ]
+    },
+    {
+      "id": "fete",
+      "lines": [
+        { "characterId": "narrateur", "text": "Toutes les citrouilles du jardin s'allument pour une grande fête." },
+        { "characterId": "leo", "text": "C'est le plus bel Halloween du monde !" }
+      ]
+    },
+    {
+      "id": "etoiles",
+      "lines": [
+        { "characterId": "narrateur", "text": "Le hibou les emmène voir les étoiles, puis les ramène bien au chaud dans leur lit." }
+      ]
+    }
+  ]
+}

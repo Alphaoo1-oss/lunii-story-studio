@@ -1,0 +1,80 @@
+{
+  "title": "Léo, Mia et la citrouille magique",
+  "description": "Une aventure d'Halloween pas trop effrayante pour les 4-6 ans.",
+  "brief": "Léo, 6 ans, et sa sœur Mia, 4 ans, une aventure d'Halloween pas trop effrayante.",
+  "listenerAge": 5,
+  "sizeSettings": { "choicesPerPath": 2, "optionsPerChoice": 2, "allowMerging": true, "minutesPerPath": 5 },
+  "characters": [
+    { "id": "narrateur", "name": "Narrateur", "isNarrator": true, "age": null, "description": "Voix douce et chaleureuse.", "voice": { "source": "piper", "voiceId": "fr_FR-siwis-medium", "settings": {} } },
+    { "id": "leo", "name": "Léo", "isNarrator": false, "age": 6, "description": "Petit garçon curieux, cape de vampire.", "voice": { "source": "recorded", "voiceId": null, "settings": {} } },
+    { "id": "mia", "name": "Mia", "isNarrator": false, "age": 4, "description": "Petite fille rieuse, chapeau de sorcière.", "voice": { "source": "recorded", "voiceId": null, "settings": {} } }
+  ],
+  "graph": {
+    "startSegmentId": "intro",
+    "segments": [
+      {
+        "id": "intro",
+        "title": "La citrouille qui brille",
+        "lines": [
+          { "id": "intro-1", "characterId": "narrateur", "text": "Le soir d'Halloween, Léo et Mia trouvent une citrouille qui brille dans le jardin." },
+          { "id": "intro-2", "characterId": "mia", "text": "Elle nous fait un clin d'œil !" },
+          { "id": "intro-3", "characterId": "narrateur", "text": "Où doivent-ils suivre la lumière de la citrouille ?" }
+        ],
+        "next": { "kind": "choice", "choiceId": "choix-lieu" }
+      },
+      {
+        "id": "foret",
+        "title": "La forêt des lucioles",
+        "lines": [
+          { "id": "foret-1", "characterId": "narrateur", "text": "Dans la forêt, des lucioles dansent autour d'eux." },
+          { "id": "foret-2", "characterId": "leo", "text": "Regarde, un hibou avec des lunettes !" },
+          { "id": "foret-3", "characterId": "narrateur", "text": "Que doivent-ils faire ?" }
+        ],
+        "next": { "kind": "choice", "choiceId": "choix-hibou" }
+      },
+      {
+        "id": "chateau",
+        "title": "Le château des bonbons",
+        "lines": [
+          { "id": "chateau-1", "characterId": "narrateur", "text": "Au château, un fantôme gourmand leur offre des bonbons, puis les raccompagne au jardin." }
+        ],
+        "next": { "kind": "segment", "segmentId": "fete" }
+      },
+      {
+        "id": "fete",
+        "title": "La fête du jardin",
+        "lines": [
+          { "id": "fete-1", "characterId": "narrateur", "text": "Toutes les citrouilles du jardin s'allument pour une grande fête." },
+          { "id": "fete-2", "characterId": "leo", "text": "C'est le plus bel Halloween du monde !" }
+        ],
+        "next": { "kind": "end" }
+      },
+      {
+        "id": "etoiles",
+        "title": "Le voyage dans les étoiles",
+        "lines": [
+          { "id": "etoiles-1", "characterId": "narrateur", "text": "Le hibou les emmène voir les étoiles, puis les ramène bien au chaud dans leur lit." }
+        ],
+        "next": { "kind": "end" }
+      }
+    ],
+    "choices": [
+      {
+        "id": "choix-lieu",
+        "prompt": "Où suivre la lumière ?",
+        "options": [
+          { "id": "opt-foret", "label": "La forêt des lucioles", "targetSegmentId": "foret" },
+          { "id": "opt-chateau", "label": "Le château des bonbons", "targetSegmentId": "chateau" }
+        ]
+      },
+      {
+        "id": "choix-hibou",
+        "prompt": "Que faire avec le hibou ?",
+        "options": [
+          { "id": "opt-fete", "label": "Rentrer à la fête", "targetSegmentId": "fete" },
+          { "id": "opt-etoiles", "label": "Voler vers les étoiles", "targetSegmentId": "etoiles" }
+        ]
+      }
+    ]
+  }
+}
