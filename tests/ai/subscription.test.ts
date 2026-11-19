@@ -73,11 +73,20 @@ describe("SettingsRoutedGenerator", () => {
   const named = (name: string): TextGenerator => ({ generate: async <T>(_: GenerateRequest<T>) => name as T });
   const req: GenerateRequest<string> = { system: "", prompt: "", schema: z.string() };
 
-  it("utilise l'abonnement par défaut, puis la clé API si l'utilisateur la choisit", async () => {
+  it("utilise la clé API par défaut, et n'accepte pas l'abonnement sans autorisation du poste", async () => {
     const settings = new SettingsStore(await tempDir(), {});
     const router = new SettingsRoutedGenerator(settings, { subscription: named("abonnement"), api: named("api") });
-    expect(await router.generate(req)).toBe("abonnement");
-    await settings.update({ textProvider: "api" });
     expect(await router.generate(req)).toBe("api");
+    await settings.update({ textProvider: "subscription" });
+    expect(await router.generate(req)).toBe("api");
+    expect((await settings.getPublicSettings()).subscriptionAllowed).toBe(false);
+  });
+
+  it("permet l'abonnement sur le poste personnel autorisé", async () => {
+    const settings = new SettingsStore(await tempDir(), { CLAUDE_SUBSCRIPTION_PERSONAL: "1" });
+    const router = new SettingsRoutedGenerator(settings, { subscription: named("abonnement"), api: named("api") });
+    expect(await router.generate(req)).toBe("api");
+    await settings.update({ textProvider: "subscription" });
+    expect(await router.generate(req)).toBe("abonnement");
   });
 });

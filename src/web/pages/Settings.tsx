@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { api, errorMessage } from "../lib/client";
 
 const SERVICES: { service: Service; field: ApiKeyField; name: string; usage: string; required: boolean }[] = [
-  { service: "anthropic", field: "anthropicApiKey", name: "Anthropic (clé API)", usage: "Écrit les histoires quand l'accès « clé API » est choisi (payant, facturé à part de l'abonnement).", required: false },
+  { service: "anthropic", field: "anthropicApiKey", name: "Anthropic (clé API)", usage: "Écrit les scénarios et les histoires (payant, facturé par Anthropic sur votre compte).", required: false },
   { service: "elevenlabs", field: "elevenLabsApiKey", name: "ElevenLabs", usage: "Voix de synthèse expressives (payant).", required: false },
   { service: "gemini", field: "geminiApiKey", name: "Google Gemini (Nano Banana)", usage: "Génère les pictos illustrés (payant).", required: false },
 ];
@@ -60,16 +60,28 @@ export function Settings() {
         <div className="card-head">
           <h2>Écriture des histoires</h2>
         </div>
-        <label className="radio">
-          <input type="radio" name="provider" checked={settings.textProvider === "subscription"}
-            onChange={() => save({ textProvider: "subscription" as TextProvider })} />
-          Mon abonnement Claude (usage personnel uniquement)
-        </label>
-        <label className="radio">
-          <input type="radio" name="provider" checked={settings.textProvider === "api"}
-            onChange={() => save({ textProvider: "api" as TextProvider })} />
-          Une clé API Anthropic (indispensable si l'application est partagée)
-        </label>
+        {settings.subscriptionAllowed ? (
+          <>
+            <label className="radio">
+              <input type="radio" name="provider" checked={settings.textProvider === "subscription"}
+                onChange={() => save({ textProvider: "subscription" as TextProvider })} />
+              Mon abonnement Claude (usage personnel uniquement)
+            </label>
+            <label className="radio">
+              <input type="radio" name="provider" checked={settings.textProvider === "api"}
+                onChange={() => save({ textProvider: "api" as TextProvider })} />
+              Une clé API Anthropic
+            </label>
+          </>
+        ) : (
+          <p className="muted">
+            Les histoires sont écrites par Claude avec <strong>votre propre clé API Anthropic</strong>, à créer sur{" "}
+            <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noreferrer">
+              console.anthropic.com
+            </a>{" "}
+            puis à enregistrer ci-dessous. Chaque génération est facturée sur votre compte Anthropic.
+          </p>
+        )}
         {settings.textProvider === "subscription" && (
           <>
             <p className="muted">

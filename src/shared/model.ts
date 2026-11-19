@@ -198,8 +198,8 @@ export const Settings = z.object({
   anthropicApiKey: ApiKey,
   elevenLabsApiKey: ApiKey,
   geminiApiKey: ApiKey,
-  // Accès à Claude pour écrire les histoires : abonnement personnel (défaut) ou clé API.
-  textProvider: TextProvider.default("subscription"),
+  // Accès à Claude pour écrire les histoires : clé API (défaut) ou abonnement personnel, si autorisé sur ce poste.
+  textProvider: TextProvider.default("api"),
   textModel: z.string().min(1).default("claude-opus-5-5"),
   imageModel: z.string().min(1).default("gemini-nano-banana-2.1"),
   port: z.number().int().min(1024).max(65535).default(5174),

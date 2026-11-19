@@ -1,5 +1,8 @@
 # Lunii Story Studio
 
+> **Projet personnel non officiel**, sans lien avec Lunii ni approuvé par Lunii. « Lunii » est une
+> marque de son propriétaire ; elle est citée ici uniquement pour indiquer la compatibilité.
+
 Application web locale pour créer des histoires interactives pour la Lunii : on décrit
 l'histoire souhaitée, l'application propose des scénarios, écrit l'histoire à choix, prépare
 les voix et les pictos, puis exporte un pack compatible STUdio.
@@ -30,24 +33,15 @@ voix, lancez aussi Voicebox.
 
 L'application n'est accessible que depuis cet ordinateur.
 
-## Écriture des histoires : abonnement Claude
+## Écriture des histoires : votre clé API Anthropic
 
-Par défaut, les histoires sont écrites avec **votre abonnement Claude** (Pro ou Max), sans clé API.
-À faire une seule fois, dans un terminal ouvert dans le dossier du projet :
-
-```bash
-npm run claude:login
-```
+Les histoires sont écrites par Claude avec **votre propre clé API Anthropic** : créez-la sur la
+[console Anthropic](https://console.anthropic.com/settings/keys), puis collez-la dans l'écran
+**Réglages** de l'application. Chaque génération est facturée sur votre compte Anthropic.
+Aucune clé n'est fournie avec le projet.
 
 Sous Windows, si PowerShell refuse `npm` (« l'exécution de scripts est désactivée »), tapez
-`npm.cmd` à la place : `npm.cmd run claude:login`, `npm.cmd run app`, etc.
-
-Vérifiez ensuite la connexion dans **Réglages** (ou avec `npm run claude:status`). Les générations
-comptent dans les limites de votre abonnement.
-
-Ce mode est réservé à un **usage personnel** : Anthropic n'autorise pas une application partagée
-avec d'autres personnes à utiliser la connexion claude.ai. Dans ce cas, choisissez « clé API »
-dans les Réglages.
+`npm.cmd` à la place : `npm.cmd install`, `npm.cmd run app`, etc.
 
 ## Voix HD locales avec Voicebox
 
@@ -64,7 +58,7 @@ Les clés se saisissent dans l'écran **Réglages** de l'application. On peut au
 
 | Service | Utilisation | Obligatoire |
 |---------|-------------|-------------|
-| Anthropic (Claude) | écriture des histoires en mode « clé API » | non (l'abonnement Claude est utilisé par défaut) |
+| Anthropic (Claude) | écriture des scénarios et des histoires | oui |
 | ElevenLabs | voix de synthèse expressives | non (voix locale ou enregistrement possibles) |
 | Google Gemini (Nano Banana) | génération des pictos | non (pictos par défaut ou images importées possibles) |
 
@@ -83,3 +77,9 @@ npm test
 ```
 
 Les tests n'utilisent ni clé ni réseau.
+
+## Licence
+
+Code publié sous [licence MIT](LICENSE) : libre d'utilisation, de modification et de partage,
+sans garantie. Les services utilisés (Anthropic, Google Gemini, ElevenLabs, Voicebox, Piper,
+STUdio) gardent leurs propres conditions.

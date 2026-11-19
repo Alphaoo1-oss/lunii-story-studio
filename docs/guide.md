@@ -1,5 +1,8 @@
 # Lunii Story Studio : guide complet
 
+> Projet personnel **non officiel**, sans lien avec Lunii. « Lunii » est une marque de son
+> propriétaire, citée uniquement pour indiquer la compatibilité.
+
 Ce guide explique ce que fait l'application, comment elle fonctionne, et comment l'installer et
 la configurer sur un autre ordinateur. Il est écrit pour quelqu'un qui n'est pas développeur :
 toutes les commandes sont données telles quelles.
@@ -65,7 +68,7 @@ lancés ensemble :
                      ┌───────────────────────────────┼───────────────────────────────┐
                      ▼                               ▼                               ▼
               Écriture : Claude              Voix : Voicebox (local)          Images : Gemini
-       (abonnement ou clé API)             ou voix locale Piper              (clé API, ou à la
+          (votre clé API)                  ou voix locale Piper              (clé API, ou à la
                                            ou ElevenLabs (clé API)         main dans l'app Gemini)
                                                      │
                                                      ▼
@@ -93,8 +96,8 @@ Quelques points importants :
   l'application. Prenez la version « LTS » et installez-la avec les options par défaut.
 - Environ **2 Go d'espace libre** : l'application et ses outils prennent quelques centaines de
   Mo, chaque histoire avec ses audios quelques dizaines de Mo.
-- **Un accès à Claude** pour écrire les histoires : un abonnement Claude Pro ou Max, ou une clé
-  API Anthropic (voir [section 6](#6-écriture-des-histoires--claude)).
+- **Une clé API Anthropic** pour que Claude écrive les histoires (payante à l'usage, voir
+  [section 6](#6-écriture-des-histoires--claude)).
 
 **Selon vos choix**
 
@@ -109,8 +112,10 @@ Quelques points importants :
 
 ### 4.1 Récupérer l'application
 
-Vous avez reçu l'application sous forme d'un dossier (souvent une archive `.zip`). Décompressez-le
-à un endroit simple, par exemple `C:\Users\<votre nom>\lunii-story-studio`.
+Sur la page GitHub du projet
+(<https://github.com/Alphaoo1-oss/lunii-story-studio>), cliquez sur le bouton vert **Code** puis
+**Download ZIP**. Si vous avez reçu l'application autrement, c'est aussi un dossier ou une archive
+`.zip`. Décompressez-le à un endroit simple, par exemple `C:\Users\<votre nom>\lunii-story-studio`.
 
 Évitez un dossier synchronisé par OneDrive ou Google Drive : la synchronisation peut bloquer des
 fichiers pendant que l'application les écrit.
@@ -178,35 +183,17 @@ npm.cmd run app
 
 ## 6. Écriture des histoires : Claude
 
-Les scénarios et les histoires sont écrits par Claude, l'IA d'Anthropic. Deux accès sont
-possibles, à choisir dans **Réglages → Écriture des histoires**.
-
-### Option A : votre abonnement Claude (par défaut)
-
-Si vous avez un abonnement **Claude Pro ou Max**, l'application peut l'utiliser, sans frais en
-plus. À faire une seule fois, dans PowerShell, dans le dossier de l'application :
-
-```bash
-npm.cmd run claude:login
-```
-
-Une page de connexion s'ouvre : connectez-vous avec votre compte Claude. Vérifiez ensuite dans
-**Réglages → Vérifier la connexion**. Les histoires comptent dans les limites d'usage de votre
-abonnement.
-
-> **Important : usage personnel uniquement.** Les conditions d'Anthropic réservent ce mode à la
-> personne titulaire de l'abonnement. Chaque personne qui installe l'application doit utiliser
-> **son propre** abonnement, ou choisir l'option B. Ne partagez jamais votre connexion.
-
-### Option B : une clé API Anthropic
+Les scénarios et les histoires sont écrits par Claude, l'IA d'Anthropic, avec **votre propre clé
+API Anthropic**. Aucune clé n'est fournie avec l'application.
 
 1. Créez un compte sur la [console Anthropic](https://console.anthropic.com), ajoutez un moyen de
-   paiement et créez une clé API.
+   paiement (ou des crédits) et créez une clé API.
 2. Dans **Réglages**, collez-la dans « Anthropic (clé API) », cliquez sur **Enregistrer** puis
    **Tester**.
-3. En haut des Réglages, choisissez « Une clé API Anthropic ».
 
-L'usage est facturé par Anthropic, selon la longueur des histoires.
+L'usage est facturé par Anthropic sur votre compte, selon la longueur des histoires. La clé reste
+sur votre ordinateur (dossier `data/`) : elle n'est jamais affichée ni envoyée ailleurs qu'à
+Anthropic.
 
 Le modèle utilisé se change dans **Réglages → Modèles** ; la valeur par défaut convient.
 
@@ -431,7 +418,7 @@ Si le projet est sur GitHub ou un autre dépôt Git, ces dossiers sont déjà ex
 `.gitignore`) : il suffit de partager le lien du dépôt.
 
 La personne qui reçoit l'application suit ce guide depuis la [section 4](#4-installation) et
-configure **ses propres accès** : son abonnement Claude ou sa clé API, sa clé Gemini, ses voix
+configure **ses propres accès** : sa clé API Anthropic, sa clé Gemini, ses voix
 Voicebox. Vos voix clonées restent dans votre Voicebox et ne sont pas transmises.
 
 ## 15. Dépannage
@@ -441,7 +428,7 @@ Voicebox. Vos voix clonées restent dans votre Voicebox et ne sont pas transmise
 | « Le serveur de l'application ne répond pas » | La fenêtre noire a été fermée ou l'ordinateur a redémarré : relancez avec le lanceur. |
 | La page ne s'ouvre pas | Attendez quelques secondes et rechargez (F5). Si la fenêtre noire affiche une erreur `EADDRINUSE`, une ancienne copie tourne encore : fermez toutes les fenêtres noires et relancez. |
 | PowerShell : « l'exécution de scripts est désactivée » | Tapez `npm.cmd` au lieu de `npm`. |
-| La connexion Claude échoue | Relancez `npm.cmd run claude:login`, puis **Réglages → Vérifier la connexion**. Vérifiez aussi que vous n'avez pas atteint la limite d'usage de l'abonnement. |
+| La clé Claude est refusée ou Claude échoue | Dans **Réglages**, recollez la clé Anthropic et cliquez sur **Tester**. Vérifiez sur la console Anthropic que le compte a encore du crédit. |
 | Les voix Voicebox ne s'affichent pas ou la génération échoue | Voicebox doit être ouvert. Dans la page Voix, cliquez sur **↻ Actualiser mes profils**. |
 | Une réplique se termine par des mots en trop | Le texte associé à l'enregistrement dans Voicebox ne correspond pas exactement à l'audio : corrigez-le dans Voicebox (voir [7.1](#71-voicebox-recommandé)), puis régénérez. |
 | Les pictos ne ressemblent pas aux personnages | Rechargez la page Pictos, ouvrez une nouvelle conversation Gemini, choisissez un style en couleur et vérifiez les descriptions dans la fiche famille. |

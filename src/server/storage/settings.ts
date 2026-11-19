@@ -27,11 +27,19 @@ export class SettingsStore {
       stored[field] ??= this.env[ENV_KEYS[field]]?.trim() || null;
     }
     if (this.env.PORT) stored.port = Number(this.env.PORT);
+    if (!this.subscriptionAllowed()) stored.textProvider = "api";
     return stored;
   }
 
+  // L'abonnement Claude (connexion claude.ai) est réservé à l'usage personnel de la personne qui a
+  // installé l'application sur son propre ordinateur : il ne s'active qu'avec
+  // CLAUDE_SUBSCRIPTION_PERSONAL=1 dans son .env. Toute autre installation utilise sa propre clé API.
+  subscriptionAllowed(): boolean {
+    return this.env.CLAUDE_SUBSCRIPTION_PERSONAL === "1";
+  }
+
   async getPublicSettings(): Promise<PublicSettings> {
-    return toPublic(await this.getSettings());
+    return { ...toPublic(await this.getSettings()), subscriptionAllowed: this.subscriptionAllowed() };
   }
 
   async update(change: SettingsUpdate): Promise<PublicSettings> {
@@ -40,7 +48,9 @@ export class SettingsStore {
       const value = change[field];
       if (value !== undefined) stored[field] = value.trim() || null;
     }
-    if (change.textProvider) stored.textProvider = change.textProvider;
+    if (change.textProvider && (change.textProvider === "api" || this.subscriptionAllowed())) {
+      stored.textProvider = change.textProvider;
+    }
     if (change.textModel) stored.textModel = change.textModel;
     if (change.imageModel) stored.imageModel = change.imageModel;
     await writeFileAtomic(this.path, JSON.stringify(stored, null, 2));

@@ -10,6 +10,8 @@ export type KeyStatus = z.infer<typeof KeyStatus>;
 
 export type PublicSettings = Omit<Settings, (typeof API_KEY_FIELDS)[number]> & {
   keys: Record<(typeof API_KEY_FIELDS)[number], KeyStatus>;
+  // Abonnement Claude possible sur ce poste (usage personnel uniquement).
+  subscriptionAllowed?: boolean;
 };
 
 // Une clé vide ("") efface la clé ; une clé absente la laisse inchangée.

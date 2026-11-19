@@ -2,6 +2,7 @@
   "name": "lunii-story-studio",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "Application web locale pour créer des histoires interactives pour Lunii (packs STUdio).",
   "type": "module",
   "engines": {
